@@ -64,10 +64,9 @@ print result
 
 '''
 Complexity Analysis
-Time complexity : O(n^2).
-    A iteration of p is needed for each character in s.
+Time complexity : O(n).
+    One iteration of nums array is needed.
 
-
-Space complexity : O(n^2).
-    Extra space for matrix is used. 
+Space complexity : O(1).
+    No extra space is used. Only extra variables are needed.
 '''
