@@ -49,16 +49,13 @@ class Solution(object):
 
         low, high = 0, len(shortest_str)
 
-        while(low <= high):
+        while(low < high):
             middle = (low + high) / 2
-            print low, high, middle
-            if isCommonPrefix(strs, shortest_str, middle):
-                low = middle + 1
+            if isCommonPrefix(strs, shortest_str, middle+1):
+                low = middle+1
             else:
-                high = middle - 1
-        return shortest_str[:(low + high) / 2]
-
-
+                high = middle
+        return shortest_str[:low]
 
 
 strs = {"leets, leetcode", "leet", "leeds", "lee"}
