@@ -35,12 +35,12 @@ class Solution(object):
         right_line = len(height) - 1
 
         while left_line < right_line:
-            current_area = min(height(left_line), height(right_line)) * (right_line - left_line)
+            current_area = min(height[left_line], height[right_line]) * (right_line - left_line)
             max_area = max(max_area, current_area)
-            if height(left_line) < height(height[right_line]):
+            if height[left_line] < height[right_line]:
                 left_line += 1
             else:
-                right_line += 1
+                right_line -= 1
 
         return max_area
 
