@@ -25,8 +25,10 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-
-
+        
+        
+        # general method
+        """
         results = []
         nums.sort()
 
@@ -57,6 +59,30 @@ class Solution(object):
 
         findNum(nums, target, 4, [], results)
         return results
+        """
+      
+        twosum = {}
+        res = []
+
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                sum_ij = nums[i]+nums[j]
+                if sum_ij in twosum:
+                    twosum[sum_ij].append((i, j))
+                else:
+                    twosum[sum_ij] = [(i, j)]
+
+        for sum2 in twosum:
+            diff = target - sum2
+            if diff in twosum:
+                for i, j in twosum[sum2]:
+                    for m, n in twosum[diff]:
+                        if i != m and i != n and j != m and j != n:
+                            quadruplet = sorted([nums[i], nums[j], nums[m], nums[n]])
+                            if quadruplet not in res:
+                                res.append(quadruplet)
+
+        return res
 
 
 
