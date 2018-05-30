@@ -40,8 +40,13 @@ class Solution(object):
             '9': 'wxyz'
         }
 
-        res = reduce(lambda acc, digit: [x + y for x in acc for y in digit_letter_map[digit]], digits, [""])
-        return res
+        letters = []
+        for num in digits:
+            letters.append(digit_letter_map[num])
+        
+        combination = reduce(lambda x, y: [c1 + c2 for c1 in x for c2 in y], letters, [""])
+        
+        return combination
 
 # reduce(function, iterable[, initializer])
 # Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value.
