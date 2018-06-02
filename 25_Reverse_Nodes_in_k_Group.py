@@ -34,7 +34,7 @@ class Solution(object):
         
         '''
         k = 3
-        dummy(prev, tail) -> 1 -> 2 -> 3 -> 4 -> 5 -> 6
+        dummy(prev, tail) -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
         dummy(prev) -> 1(start, head) -> 2 -> 3(tail) -> 4 -> 5 -> 6 -> 7
         dummy(prev) -> 2(head) -> 3(tail) -> 1(start) -> 4 -> 5 -> 6 -> 7
         dummy(prev) -> 3(tail, head) -> 2 -> 1(start) -> 4 -> 5 -> 6 -> 7
