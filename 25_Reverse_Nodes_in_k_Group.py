@@ -25,30 +25,45 @@ class Solution(object):
         :rtype: ListNode
         """
 
-        if head == null or head.next == null or k<2:
+        if not head or not head.next or k<2:
             return head
-
+        
         dummy = ListNode(0)
-        temp = ListNode(0)
-
         dummy.next = head
-        tail = prev = dummy
+        prev = dummy
+        
+        '''
+        k = 3
+        dummy(prev, tail) -> 1 -> 2 -> 3 -> 4 -> 5 -> 6
+        dummy(prev) -> 1(start, head) -> 2 -> 3(tail) -> 4 -> 5 -> 6 -> 7
+        dummy(prev) -> 2(head) -> 3(tail) -> 1(start) -> 4 -> 5 -> 6 -> 7
+        dummy(prev) -> 3(tail, head) -> 2 -> 1(start) -> 4 -> 5 -> 6 -> 7
+        
+        dummy -> 3 -> 2 -> 1(prev, tail) -> 4 -> 5 -> 6 -> 7
+        dummy -> 3 -> 2 -> 1(prev) -> 4(start, head) -> 5 -> 6(tail) -> 7
+        dummy -> 3 -> 2 -> 1(prev) -> 5(head) -> 6(tail) -> 4(start) -> 7
+        dummy -> 3 -> 2 -> 1(prev) -> 6(tail,head) -> 5 -> 4(start) -> 7
+        
+        dummy -> 3 -> 2 -> 1 -> 6 -> 5 -> 4(prev, tail) -> 7
+        '''
+        
+        while True:
+            count = 0
+            tail = prev
+            while tail.next and count < k: # check if next k ListNode are valid or not
+                tail = tail.next
+                count += 1
+            if count == k:
+                start = head = prev.next
+                for _ in range(k-1):
+                    prev.next= head.next
+                    head.next = tail.next
+                    tail.next = head
 
-        count = 0
-        while tail != null and count < k:
-            tail = tail.next
-            count +=1
-        if tail == null:
-            break
-
-        while prev.next != tail:
-            temp = prev.next
-            prev.next = temp.next
-
-            temp.next = tail.next
-            tail.next = temp
-
-        return prev.next
+                    head = prev.next
+                prev = start
+            else:
+                return dummy.next
 
 
 head = 1->2->3->4->5->6
