@@ -90,10 +90,14 @@ class Solution(object):
                 matrix[i][0] = 0
 
 
-path = "//home/a/./b/../../c/"
+matrix = [
+    [0,1,2,0],
+    [3,4,5,2],
+    [1,3,1,5]
+]
 
 solution = Solution()
-result = solution.simplifyPath(path)
+result = solution.setZeroes(matrix)
 print result
 
 '''

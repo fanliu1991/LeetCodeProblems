@@ -74,6 +74,7 @@ class Solution(object):
         but just treat it as a sorted list.
         '''
 
+        '''
         left, right = 0, m * n - 1
         
         while left <= right:
@@ -88,18 +89,24 @@ class Solution(object):
                 right = middle - 1
         
         return False
+        '''
 
 
-path = "//home/a/./b/../../c/"
+matrix = [
+    [1,   3,  5,  7],
+    [10, 11, 16, 20],
+    [23, 30, 34, 50]
+]
+target = 13
 
 solution = Solution()
-result = solution.simplifyPath(path)
+result = solution.searchMatrix(matrix, target)
 print result
 
 '''
 Complexity Analysis
-Time complexity : O(mn).
-    We are doing one pass through the matrix.
+Time complexity : O(logn).
+    Binary Search solution.
 
 Space complexity : O(1).
     No extra space is used. Only extra variables are needed.
