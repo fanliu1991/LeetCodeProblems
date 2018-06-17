@@ -39,6 +39,15 @@ class Solution(object):
         for num in nums:
             res = res + [[num] + ele for ele in res]
 
+        """
+        e.g. nums = [1,2,3]
+        result: [[]]
+
+        num=1     [[], [1]]
+        num=2     [[], [1], [2], [1,2]]
+        num=3     [[], [1], [2], [1,2], [3], [1,3], [2,3], [1,2,3]]
+        """
+
         return res
 
 
