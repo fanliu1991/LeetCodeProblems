@@ -73,13 +73,6 @@ class Solution(object):
         return dummy.next
 
 
-        for i in range(len(nums) - 1):
-            furthest_jump = max(furthest_jump, i + nums[i])
-            if i == furthest_jump and nums[i] == 0:
-                return False
-            if furthest_jump >= len(nums) - 1:
-                return True
-
 
 head = 1->2->3->4->5->NULL
 k = 2
