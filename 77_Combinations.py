@@ -40,18 +40,7 @@ class Solution(object):
         res = []
         stack = []
         x = 1
-        while True:
-            print(x, stack)
-            if len(stack) == k:
-                res.append(stack[:])
-            if len(stack) == k or x > n:
-                if not stack:
-                    return res
-                x = stack.pop() + 1
-            else:
-                stack.append(x)
-                x += 1
-
+        
         while True:
             # print(x, stack)
             if len(stack) == k:
@@ -60,16 +49,27 @@ class Solution(object):
             if len(stack) < k and x <= n:
                 stack.append(x)
                 x += 1
-            elif len(stack) == k or x > n:
+            else: # len(stack) == k or x > n:
                 x = stack.pop() + 1
                 if x <= n:
                     stack.append(x)
                     x += 1
                 if stack == []:
                     return res
-
-
-
+        
+#         simplified version
+        
+#         while True:
+#             # print(x, stack)
+#             if len(stack) == k:
+#                 res.append(stack[:])
+#             if len(stack) == k or x > n:
+#                 if not stack:
+#                     return res
+#                 x = stack.pop() + 1
+#             else:
+#                 stack.append(x)
+#                 x += 1
 
 
 
