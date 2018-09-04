@@ -29,9 +29,9 @@ class Solution(object):
         :rtype: void Do not return anything, modify nums1 in-place instead.
         """
 
-        i = m-1
-        j = n-1
-        current = m+n-1
+        i = m - 1
+        j = n - 1
+        current = m + n - 1
 
         while i >= 0 and j >= 0:
             if nums1[i] > nums2[j]:
@@ -42,8 +42,10 @@ class Solution(object):
                 j -= 1
             current -= 1
 
-        if j >= 0:
-            num1[:j+1] = nums2[:j+1]
+        if j >= 0: # all elements in nums1 are used
+            nums1[:current+1] = nums2[:j+1]
+        else: # all elements in nums2 are used
+            nums1[:current+1] = nums1[:i+1]
 
         return nums1
 
