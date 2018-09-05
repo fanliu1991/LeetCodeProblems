@@ -27,28 +27,30 @@ class Solution(object):
 
         dummy = ListNode(0)
         dummy.next = head
-        temp = dummy
+        current = dummy
 
-        for i in range(m-1):
-            temp = temp.next
+        for i in range(1, m):
+            current = current.next
 
-        unchanged_end = temp
-        reverse_head = temp.next
+        before_reverse = current
+        reverse_head = current.next
 
-        prev = reverse_head
-        current = reverse_head.next
-        next = reverse_head.next.next
+        # since there are at least two nodes to be reversed
+        first = current.next.next
+        second = current.next
+        
+        # use the position of "first" as index i
+        for i in range(m+1, n+1):
+            current = first.next
+            first.next = second
+            second = first
+            first = current
 
-        for i in range(n-m-1):
-            current.next = prev
-            prev = current
-            current = next
-            next = current.next
+        after_reverse = current
+        reverse_tail = second
 
-        current.next = prev
-
-        unchanged_end.next = current
-        reverse_head.next = next
+        before_reverse.next = reverse_tail
+        reverse_head.next = after_reverse
 
         return dummy.next
 
