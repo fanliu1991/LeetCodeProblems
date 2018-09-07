@@ -59,12 +59,12 @@ class Solution:
         """
         Inorder traversal:
             result = []
-            inorder_traversal(root):
+            def inorder_traversal(root):
                 if (root == null)
                     return
-                traverse(root.left)
+                inorder_traversal(root.left)
                 result.append(root.val)
-                traverse(root.right)
+                inorder_traversal(root.right)
 
         In case of a binary serach tree (BST),
         inorder traversal generates result list with sorted values.
